@@ -20,7 +20,7 @@ connection.connect(function(err) {
 
 
 /* GET users listing. */
-router.post('/', function(req, res, next) {
+router.get('/', function(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
   connection.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], function(err, row, fields){
