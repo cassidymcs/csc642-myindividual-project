@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { MenuButton, Logo, Homehead } from "../components/header";
 import {SearchBar, ThemeProvider } from "react-native-elements";
 import { FlatList } from "react-native-gesture-handler";
+import myapi from "../components/myapi.json";
 
 export default class BookShelfScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -13,10 +14,13 @@ export default class BookShelfScreen extends React.Component {
             headerLayoutPreset: "center"
         };
     };
-
-    state = {
-        data: []
+    constructor(props){
+        super(props);
+    this.state = {
+        data: [],
+        loading: false,
     }
+}
 
     fetchBooks = async()=>{
         const response = await fetch('https://randomuser.me/api?results=10');
@@ -42,26 +46,26 @@ export default class BookShelfScreen extends React.Component {
             <Text style = {styles.settingsHeader}> Your Book Shelf </Text>
             <Text style={{textAlign: 'center', fontSize: 15}}> Number of Books read: 10 </Text>
          <View >
-         <ScrollView>
-              <FlatList
-                  data={this.state.data}
+         <ScrollView style={styles.bottompadding}>
+        {
+            myapi.Books.map(Books => {
+                return(
+                    <View key ={ Books.id} style = {styles.item}>
+                     <Text>{Books.title}</Text>
+                    <Text>{Books.author}</Text>
+                    </View>
+                )
+            })
+        } 
 
-
-                  renderItem={({item}) =>
-                  
-                  <Text>{`${item.name.first} ${item.name.last}`}</Text>
-        }
-                  />
-        
              </ScrollView>
-         
          </View>
        </View>
         );
     }
 }
 
-   const state = {
+   /*const state = {
        names: [
           {'name': 'Book 1', 'id': 1},
           {'name': 'Book 2', 'id': 2},
@@ -76,7 +80,7 @@ export default class BookShelfScreen extends React.Component {
           {'name': 'Book 11', 'id': 11},
           {'name': 'Book 12', 'id': 12}
        ]
-    }
+    }*/
 
     /*{
         state.names.map((item, index) => (
@@ -117,4 +121,7 @@ const styles = StyleSheet.create({
         borderRadius: 2,
         backgroundColor: '#d2f7f1'
      },
+     bottompadding:{
+         paddingBottom: 100,
+     }
 });

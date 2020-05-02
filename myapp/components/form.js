@@ -48,11 +48,9 @@ this.setState({
     return (
       <View>
        <Form
-         ref='myform'
-         type={bookdata}
-         // options={{}}
-          value={this.state.value}
-         // onChange={{}}
+        ref='myform'
+        type={bookdata}
+        value={this.state.value}
        />
        <TouchableOpacity style={styles.button} onPress={this.submitForm}>
   <Text style={styles.buttonText}>Add to Shelf</Text>
@@ -60,6 +58,56 @@ this.setState({
       </View>
     )
   }
+}
+
+export class Progressform extends Component {
+
+    constructor(props){
+        super(props);
+        this.state={
+            Page: '',
+            NewPage: '',
+            PagesLeft: '',
+      };
+      this.submitForm = this.submitForm.bind(this)
+  }
+
+  resetForm(){
+this.setState({
+   Page: '',
+   NewPage: '',
+   PagesLeft: '',
+});
+  }
+
+  submitForm() {
+    var value = this.refs.myform.getValue();
+    if (value) {
+        console.log(value);
+        this.resetForm();
+  }
+}
+    render(){
+        let User = t.struct({
+            Page: t.Num,
+            NewPage: t.Num,
+            PagesLeft: t.maybe(t.Num),
+
+        });
+
+        return(
+            <View style={styles.addForm}>
+            <Form type={User}         
+                 ref='myform'  
+                 value={this.state.value} />
+            <TouchableOpacity style={styles.button} onPress={this.submitForm}>
+         <Text>Update</Text>
+     </TouchableOpacity>
+            </View>
+
+        )
+    }
+
 }
 
 const styles = StyleSheet.create({

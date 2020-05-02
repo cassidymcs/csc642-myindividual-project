@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Update } from "../components/header";
 import { HeaderBackButton } from "react-navigation-stack";
 import  t  from  'tcomb-form-native'
+import {Progressform} from "../components/form";
 
 export default class UpdateProgressScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -18,26 +19,12 @@ export default class UpdateProgressScreen extends React.Component {
             <View style={styles.settingsContainer}>
             <Text style = {styles.settingsHeader}> Progress </Text>
             <View style={styles.addForm}>
-             <Form type={User}/>
-             <TouchableOpacity
-        style={styles.button}
-      >
-          <Text>Update</Text>
-      </TouchableOpacity>
+              <Progressform/>
              </View>
           </View>
         );
     }
 }
-
-const Form = t.form.Form;
-
-const User = t.struct({
-  Page: t.Number,
-  New_Page: t.Number,
-  Pages_Left: t.Number,
-
-});
 
 const styles = StyleSheet.create({
     container: {

@@ -9,6 +9,14 @@ var mysql = require('mysql');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var fs = require('fs');
+var api = fs.readFileSync('api.json');
+console.log(api);
+
+
+
+
+
 var app = express();
 
 // view engine setup
