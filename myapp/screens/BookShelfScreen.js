@@ -18,14 +18,17 @@ export default class BookShelfScreen extends React.Component {
         super(props);
     this.state = {
         data: [],
-        loading: false,
     }
 }
 
+/* users.js from backend is outputting data i have stored in mysql database, however this app is an ios app and it seems i cannot access local mysql data bases since it is http://localhost?  i guess 
+ios requires https, i spent a lot of time searching for a solution, but ended up rerouting and hardcoding my own data into the myapi.json folder i have stored in front end. 
+output on browser from users.js when i open http://localhost:3000/users => {"data":[{"title":"Harry Potter","author":"J. K. Rowling","genre":"Fantasy Fiction"}]}   this is all data i stored using queries 
+this means backend and front end are not necessarily connected. still looking into how to fix this. I left the following code since it took me a while and i believe it should have otherwise worked.  */
     fetchBooks = async()=>{
-        const response = await fetch('https://randomuser.me/api?results=10');
-        const json = await response.json();
-        this.setState({data: json.results});
+        const response = await fetch('https://localhost:3000/users');
+        const user = await response.json();
+        this.setState({data: user});
     }
 
     componentDidMount(){

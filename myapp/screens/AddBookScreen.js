@@ -1,7 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, AlertIOS, Button } from "react-native";
-import { MenuButton, Addhead, Logo} from "../components/header";
-import  t  from  'tcomb-form-native'
+import { View, Text, StyleSheet} from "react-native";
+import { MenuButton, Addhead} from "../components/header";
 import {Addbookform } from "../components/form";
 
 
@@ -27,8 +26,6 @@ export default class AddBookScreen extends React.Component {
           );
   }
 }
-//https://stackoverflow.com/questions/55911952/how-to-send-data-from-a-form-data-to-a-database-using-reactjs-node-js-and-mysq/55912000
-//https://www.youtube.com/watch?v=HPIjjFGYSJ4 accessing data base 
 
 const styles = StyleSheet.create({
   container: {

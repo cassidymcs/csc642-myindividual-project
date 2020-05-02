@@ -20,7 +20,6 @@ connection.connect(function(err) {
 
 const SELECT_ALL_BOOKS = 'SELECT* FROM books';
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
@@ -33,19 +32,8 @@ router.get('/', function(req, res, next) {
       })
     }
   });
-  
-  
-  
-  /*connection.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], function(err, row, fields){
-    if (err) console.log(err);
 
-    if(row.length > 0){
-      res.send({'success': true, 'message': row[0].username});
-    } else {
-      res.send({'success': false, 'message': 'User not found, please try again'});
-    }
-  });*/
-  connection.query("SELECT * FROM user", function (err, result, fields) {
+  connection.query("SELECT * FROM user", function (err, result) {
     if (err) throw err;
     console.log(result);
   });
