@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { MenuButton, Logo, Homehead } from "../components/header";
-import {SearchBar } from "react-native-elements";
+import {SearchBar, ThemeProvider } from "react-native-elements";
+import { FlatList } from "react-native-gesture-handler";
 
 export default class BookShelfScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -12,7 +13,25 @@ export default class BookShelfScreen extends React.Component {
             headerLayoutPreset: "center"
         };
     };
+
+    state = {
+        data: []
+    }
+
+    fetchBooks = async()=>{
+        const response = await fetch('https://randomuser.me/api?results=10');
+        const json = await response.json();
+        this.setState({data: json.results});
+    }
+
+    componentDidMount(){
+        this.fetchBooks();
+    }
+
+  
     render() {
+   
+        
         return (
             <View style={styles.settingsContainer}>
                          <SearchBar
@@ -21,17 +40,21 @@ export default class BookShelfScreen extends React.Component {
                                 round
                                 platform = "ios"/>
             <Text style = {styles.settingsHeader}> Your Book Shelf </Text>
-            <Text style={{textAlign: 'center', fontSize: 15}}> Number of Books read: 14 </Text>
+            <Text style={{textAlign: 'center', fontSize: 15}}> Number of Books read: 10 </Text>
          <View >
          <ScrollView>
-                {
-                   state.names.map((item, index) => (
-                      <View key = {item.id} style = {styles.item}>
-                         <Text>{item.name}</Text>
-                      </View>
-                   ))
-                }
+              <FlatList
+                  data={this.state.data}
+
+
+                  renderItem={({item}) =>
+                  
+                  <Text>{`${item.name.first} ${item.name.last}`}</Text>
+        }
+                  />
+        
              </ScrollView>
+         
          </View>
        </View>
         );
@@ -54,6 +77,14 @@ export default class BookShelfScreen extends React.Component {
           {'name': 'Book 12', 'id': 12}
        ]
     }
+
+    /*{
+        state.names.map((item, index) => (
+           <View key = {item.id} style = {styles.item}>
+              <Text>{item.name}</Text>
+           </View>
+        ))
+     }*/
  
  
 

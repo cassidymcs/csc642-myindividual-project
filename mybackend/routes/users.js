@@ -18,12 +18,25 @@ connection.connect(function(err) {
   console.log('connection successful!, id: ' + connection.threadId);
 });
 
+const SELECT_ALL_BOOKS = 'SELECT* FROM books';
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
-  connection.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], function(err, row, fields){
+  connection.query(SELECT_ALL_BOOKS, (err, results) => {
+    if(err){
+      return res.send(err)
+    } else {
+      return res.json({
+        data: results
+      })
+    }
+  });
+  
+  
+  
+  /*connection.query("SELECT * FROM user WHERE username = ? AND password = ?", [username, password], function(err, row, fields){
     if (err) console.log(err);
 
     if(row.length > 0){
@@ -31,6 +44,10 @@ router.get('/', function(req, res, next) {
     } else {
       res.send({'success': false, 'message': 'User not found, please try again'});
     }
+  });*/
+  connection.query("SELECT * FROM user", function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
   });
 
 });
