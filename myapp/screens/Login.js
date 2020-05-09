@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, 
-  TouchableOpacity, AsyncStorage, NavigatorIOS, AppRegistry} from "react-native";
+  TouchableOpacity, AsyncStorage, AppRegistry} from "react-native";
 
 
 export default class Login extends Component{

@@ -1,4 +1,4 @@
-var createError = require('http-errors');
+//var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -11,11 +11,8 @@ var usersRouter = require('./routes/users');
 
 var fs = require('fs');
 var api = fs.readFileSync('api.json');
-console.log(api);
-
-
-
-
+let data = JSON.parse(api);
+console.log(data);
 
 var app = express();
 
