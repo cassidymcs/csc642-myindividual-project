@@ -2,8 +2,9 @@
 my app for individual project 
 
 
+I created my project using mysql, node.js, express, and react-native. 
 
-The Video is the attached .mov vile which demonstrates the functionalities of the app. In The ScreenShot Report, you can see pictures of each 
+The Video is the attached .mov file which demonstrates the functionalities of the app. In The ScreenShot Report, you can see pictures of each 
 screen with a small description underneath. 
 
 I ran into numerous problems while trying to connect my application to mybackend, tried many things and was not able to find a solution. 
