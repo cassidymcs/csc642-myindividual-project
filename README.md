@@ -11,8 +11,7 @@ I ran into numerous problems while trying to connect my application to mybackend
 It proved to be difficult to fetch data from mysql database on the ios app, I kept getting Network Request Failed and after researching a whole bunch, found that
 ios applications require https requests which I was not able to gfigure out how to create certificates for using mysqlworkbench. 
 
-Either way you can see in MyBookShelfScreen.js I have implemented fetch calls as well as in form.js I handle collecting the data that is entered by the user. I am hoping 
-for as much credit as I can earn. Thanks.
+Either way you can see in MyBookShelfScreen.js I have implemented fetch calls as well as in form.js I handle collecting the data that is entered by the user. 
 
 Cassidy McSkimming
 
